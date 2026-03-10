@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#f9fbfb;
+color:#1b1b1b;
+animation:fadeIn 1.2s ease;
+}
+
+.container{
+text-align:center;
+max-width:700px;
+padding:40px;
+background:white;
+border-radius:16px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+h1{
+font-size:28px;
+margin-bottom:10px;
+color:#0f766e;
+}
+
+.typing{
+font-size:18px;
+line-height:1.6;
+color:#333;
+min-height:60px;
+}
+
+.cursor{
+display:inline-block;
+width:3px;
+background:#0f766e;
+margin-left:4px;
+animation:blink 1s infinite;
+}
+
+.wait{
+margin-top:25px;
+font-size:14px;
+color:#666;
+opacity:0;
+transition:opacity .6s ease;
+}
+
+@keyframes blink{
+0%{opacity:1}
+50%{opacity:0}
+100%{opacity:1}
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(10px)}
+to{opacity:1; transform:translateY(0)}
+}
+
+@media(max-width:600px){
+
+.container{
+padding:30px 20px;
+}
+
+h1{
+font-size:24px;
+}
+
+.typing{
+font-size:16px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Welcome</h1>
+
+<div class="typing">
+<span id="text"></span><span class="cursor"></span>
+</div>
+
+<div class="wait" id="waitMsg">
+Please wait while we take you to the portfolio…
+</div>
+
+</div>
+
+<script>
+
+const message = "Welcome to our digital portfolio. Innovation, creativity, and technology in action.";
+
+let index = 0;
+const speed = 45;
+
+function typeEffect(){
+if(index < message.length){
+document.getElementById("text").innerHTML += message.charAt(index);
+index++;
+setTimeout(typeEffect, speed);
+}
+else{
+document.getElementById("waitMsg").style.opacity = "1";
+}
+}
+
+window.onload = function(){
+
+typeEffect();
+
+setTimeout(function(){
+window.location.href = "portfolio.html";
+}, 5000);
+
+};
+
+</script>
+
+</body>
+</html>
